@@ -1,33 +1,23 @@
-// 1. Variables 
-$primary-color: #007bff;
-$dark-grey-color: #343a40;
-$secondary-color: #6c757d;
-$success-color: #28a745;
-$danger-color: #dc3545;
-$warning-color: #ffc107;
-$info-color: #17a2b8;
-$white-color: #ffffff;
-
-// 2. Mixins
-@mixin flex-center {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 15px;
-}
-
-// Mixin with arguments
-@mixin text-style($size, $color) {
-    font-size: $size;
-    color: $color;
-    //   font-weight: bold;
-}
+@use "sass:color";
+// Partial files (Variables and Mixins) _variables.scss and _mixins.scss '_' underscore starts with underscore means it's a partial file and won't be compiled to CSS directly, but can be imported into other SCSS files.
+@use 'variables' as *;
+@use 'mixins' as *;
 
 body {
     font-family: 'Arial', sans-serif;
-    background-color: #f4f4f4;
-    color: $dark-grey-color; // Variable use
     padding: 40px;
+    transition: all 0.5s ease;
+
+    // Conditional Statements (light/dark mode)
+    @if $layout-mode =="dark" {
+        background-color: $dark-grey-color;
+        color: $white-color;
+    }
+
+    @else {
+        background-color: $white-color;
+        color: $dark-grey-color;
+    }
 
     // 3. Nesting Start (Body inside elements)
     h1 {
@@ -40,7 +30,16 @@ body {
     p {
         line-height: 1.6;
         margin-bottom: 20px;
-        @include text-style(18px, $secondary-color);
+
+        @if $layout-mode =="dark" {
+            @include text-style(18px, $light-white);
+        }
+
+        @else {
+            @include text-style(18px, $dark-black);
+        }
+
+
     }
 
     ul {
@@ -48,14 +47,27 @@ body {
         padding: 0;
 
         li {
-            background: $white-color;
             margin-bottom: 10px;
-            padding: 10px;
-            border-left: 5px solid $secondary-color;
+            padding: 15px;
+            border-radius: 8px;
 
             strong {
                 color: $primary-color; // Only for the strong tags inside the list
             }
+
+            @if $layout-mode =="dark" {
+                background: #2d2d2d;
+                color: $light-white;
+                border-left: 5px solid $primary-color;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            }
+
+            @else {
+                background: $white-color;
+                border-left: 5px solid $secondary-color;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            }
+
         }
     }
 
@@ -63,7 +75,7 @@ body {
         padding: 10px;
         border: 1px solid $secondary-color;
         border-radius: 4px;
-        width: 250px;
+        width: calc(50% - 50px); // Calculation using SCSS operators +, -, *, /, % (modulus)
     }
 
     button {
@@ -77,7 +89,7 @@ body {
 
         // Special '&' operator (Parent Selector)
         &:hover {
-            background-color: darken($primary-color, 15%); // Color thora dark ho jaye ga
+            background-color: color.scale($primary-color, $lightness: -15%); // Color thora dark ho jaye ga
         }
     }
 

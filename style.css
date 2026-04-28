@@ -1,8 +1,9 @@
 body {
   font-family: "Arial", sans-serif;
-  background-color: #f4f4f4;
-  color: #343a40;
   padding: 40px;
+  transition: all 0.5s ease;
+  background-color: #343a40;
+  color: #ffffff;
 }
 body h1 {
   font-size: 40px;
@@ -15,26 +16,31 @@ body p {
   line-height: 1.6;
   margin-bottom: 20px;
   font-size: 18px;
-  color: #6c757d;
+  color: #dcddde;
 }
 body ul {
   list-style: none;
   padding: 0;
 }
 body ul li {
-  background: #ffffff;
   margin-bottom: 10px;
-  padding: 10px;
-  border-left: 5px solid #6c757d;
+  padding: 15px;
+  border-radius: 8px;
 }
 body ul li strong {
   color: #007bff;
+}
+body ul li {
+  background: #2d2d2d;
+  color: #dcddde;
+  border-left: 5px solid #007bff;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
 }
 body input[type=text] {
   padding: 10px;
   border: 1px solid #6c757d;
   border-radius: 4px;
-  width: 250px;
+  width: calc(50% - 50px);
 }
 body button {
   padding: 10px 20px;
@@ -46,7 +52,7 @@ body button {
   transition: 0.3s ease;
 }
 body button:hover {
-  background-color: rgb(0, 86.1, 178.5);
+  background-color: rgb(0, 104.55, 216.75);
 }
 body .btn-danger, body .btn-success {
   padding: 12px 25px;

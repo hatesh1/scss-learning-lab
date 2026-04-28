@@ -1,0 +1,14 @@
+// 2. Mixins
+@mixin flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+}
+
+// Mixin with arguments
+@mixin text-style($size, $color) {
+    font-size: $size;
+    color: $color;
+    //   font-weight: bold;
+}

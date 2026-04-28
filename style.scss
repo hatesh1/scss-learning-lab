@@ -1,0 +1,112 @@
+// 1. Variables 
+$primary-color: #007bff;
+$dark-grey-color: #343a40;
+$secondary-color: #6c757d;
+$success-color: #28a745;
+$danger-color: #dc3545;
+$warning-color: #ffc107;
+$info-color: #17a2b8;
+$white-color: #ffffff;
+
+// 2. Mixins
+@mixin flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+}
+
+// Mixin with arguments
+@mixin text-style($size, $color) {
+    font-size: $size;
+    color: $color;
+    //   font-weight: bold;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    color: $dark-grey-color; // Variable use
+    padding: 40px;
+
+    // 3. Nesting Start (Body inside elements)
+    h1 {
+        @include text-style(40px, $primary-color); // Mixin usage with arguments
+        text-align: center;
+        border-bottom: 2px solid $primary-color;
+        padding-bottom: 10px;
+    }
+
+    p {
+        line-height: 1.6;
+        margin-bottom: 20px;
+        @include text-style(18px, $secondary-color);
+    }
+
+    ul {
+        list-style: none;
+        padding: 0;
+
+        li {
+            background: $white-color;
+            margin-bottom: 10px;
+            padding: 10px;
+            border-left: 5px solid $secondary-color;
+
+            strong {
+                color: $primary-color; // Only for the strong tags inside the list
+            }
+        }
+    }
+
+    input[type="text"] {
+        padding: 10px;
+        border: 1px solid $secondary-color;
+        border-radius: 4px;
+        width: 250px;
+    }
+
+    button {
+        padding: 10px 20px;
+        background-color: $primary-color;
+        color: $white-color;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: 0.3s ease;
+
+        // Special '&' operator (Parent Selector)
+        &:hover {
+            background-color: darken($primary-color, 15%); // Color thora dark ho jaye ga
+        }
+    }
+
+    // 4. Placeholder Selectors (Reusable styles without generating CSS)
+    %btn-layout {
+        padding: 12px 25px;
+        border-radius: 50px;
+        border: none;
+        cursor: pointer;
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+
+    // 5. Extending Placeholder Selectors
+    .btn-success {
+        @extend %btn-layout;
+        background-color: $success-color;
+        color: white;
+    }
+
+    .btn-danger {
+        @extend %btn-layout;
+        background-color: $danger-color;
+        color: white;
+    }
+
+    // Mixin use
+    .form-group {
+        @include flex-center;
+        margin-top: 30px;
+    }
+}

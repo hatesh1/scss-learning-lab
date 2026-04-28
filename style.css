@@ -1,0 +1,73 @@
+body {
+  font-family: "Arial", sans-serif;
+  background-color: #f4f4f4;
+  color: #343a40;
+  padding: 40px;
+}
+body h1 {
+  font-size: 40px;
+  color: #007bff;
+  text-align: center;
+  border-bottom: 2px solid #007bff;
+  padding-bottom: 10px;
+}
+body p {
+  line-height: 1.6;
+  margin-bottom: 20px;
+  font-size: 18px;
+  color: #6c757d;
+}
+body ul {
+  list-style: none;
+  padding: 0;
+}
+body ul li {
+  background: #ffffff;
+  margin-bottom: 10px;
+  padding: 10px;
+  border-left: 5px solid #6c757d;
+}
+body ul li strong {
+  color: #007bff;
+}
+body input[type=text] {
+  padding: 10px;
+  border: 1px solid #6c757d;
+  border-radius: 4px;
+  width: 250px;
+}
+body button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+body button:hover {
+  background-color: rgb(0, 86.1, 178.5);
+}
+body .btn-danger, body .btn-success {
+  padding: 12px 25px;
+  border-radius: 50px;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+body .btn-success {
+  background-color: #28a745;
+  color: white;
+}
+body .btn-danger {
+  background-color: #dc3545;
+  color: white;
+}
+body .form-group {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  margin-top: 30px;
+}/*# sourceMappingURL=style.css.map */
